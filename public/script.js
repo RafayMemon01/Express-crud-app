@@ -158,7 +158,7 @@ function editPost(postId) {
         confirmButtonColor: "#212121",
         showLoaderOnConfirm: true,
         preConfirm: (password) => {
-            if (password === '48597555') {
+            if (password === '01122334') {
                 // If the password is correct, display an edit form
                 axios.get(`/api/v1/post/${postId}`)
                     .then(response => {
