@@ -1,7 +1,13 @@
+*{
+    color: #fff;
+}
 body {
     background: rgb(102, 232, 231);
     background: linear-gradient(90deg, rgba(102, 232, 231, 1) 0%, rgba(203, 235, 222, 1) 48%);
+    color: #fff;
+    /* background-repeat: no-repeat; */
 }
+
 row.space-arround{
     display: flex;
     justify-content: center;
@@ -45,4 +51,30 @@ row.space-arround div button{
 
 div:where(.swal2-container) div:where(.swal2-loader) {
     border-color: #212121 #fff;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin-left: 1em;
+    margin-top: 2em;
+    color: #fff;
+}
+label{
+    color: #fff;
+    font-weight: bold;
+}
+.input{
+    width: 80%;
+}
+.button{
+    width: fit-content;
+    margin-left: 95%;
+    margin-top: 1em;
+    color: #66e8e7;
+    font-size: larger;
+}
+.posts{
+    margin-left: 1em;
+    margin-top: 2em;
 }
