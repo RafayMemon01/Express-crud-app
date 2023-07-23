@@ -1,22 +1,9 @@
-// function createPost(e){
-//     e.preventDefault()
-//     let postTitle = document.querySelector("#title");
-//     let postText = document.querySelector("#text");
+// Comment blocks in JavaScript are denoted using /* ... */ instead of //
 
-// }
-// document.addEventListener("contextmenu", (e) => {
-//     e.preventDefault();
-//    }, false);
-//    document.addEventListener("keydown", (e) => {
-//     if (e.ctrlKey || e.keyCode==123) {
-//      e.stopPropagation();
-//      e.preventDefault();
-//     }
-//    });
 function createPost(e){
     e.preventDefault();
-    let postTitle = document.querySelector('#title')
-    let postText = document.querySelector('#text')
+    let postTitle = document.querySelector('#title');
+    let postText = document.querySelector('#text');
     let timeStamp = new Date().toISOString();
     axios.post(`/api/v1/post`,{
         title: postTitle.value,
@@ -36,71 +23,70 @@ function createPost(e){
     .catch(function(error) {
         // handle error
         console.log(error.data);
-        document.querySelector(".result").innerHTML = "error in post submission"
+        document.querySelector(".result").innerHTML = "error in post submission";
     });
-    postTitle.value = ""
-    postText.value = ""
+    postTitle.value = "";
+    postText.value = "";
 }
 
 function renderPost() {
     axios.get(`/api/v1/posts`)
     .then(function(response){
-        posts = response.data;
+        const posts = response.data;
         let postContainer = document.querySelector(".result");
         postContainer.innerHTML = "";
         posts.forEach(function(post){
             let postElement = document.createElement("div");
-            postElement.className += " post"
-            let time = document.createElement("p")
-            time.className += " regards center"
-            time.textContent = moment(post.timestamp).fromNow()
+            postElement.className = "post";
+            let time = document.createElement("p");
+            time.className = "regards center";
+            time.textContent = moment(post.timestamp).fromNow();
             postElement.appendChild(time);
             let titleElement = document.createElement("h2");
             titleElement.textContent = post.title;
-            titleElement.className += " scroll"
+            titleElement.className = "scroll";
             postElement.appendChild(titleElement);
             let textElement = document.createElement("p");
-                textElement.className += " scroll";
-                textElement.textContent = post.text;
-                postElement.appendChild(textElement);
-                postElement.dataset.postId = post.id;
+            textElement.className = "scroll";
+            textElement.textContent = post.text;
+            postElement.appendChild(textElement);
+            postElement.dataset.postId = post.id;
 
-                let row = document.createElement("div")
-                row.className += " space-around"
+            let row = document.createElement("div");
+            row.className = "space-around";
 
-                let regards = document.createElement("p")
-                regards.className += " regards"
-                regards.textContent = "Regards! Rafay Memon"
-                row.appendChild(regards)
+            let regards = document.createElement("p");
+            regards.className = "regards";
+            regards.textContent = "Regards! Rafay Memon";
+            row.appendChild(regards);
 
-                let edit = document.createElement("i");
-                edit.className += " regards bi bi-pencil-fill"
-                edit.addEventListener("click",(event)=>{
-                    event.preventDefault();
-                    let postId = this.parentNode.parentNode.data.postId;
-                    editPost(postId);
-                });
-                row.appendChild(edit);
-                
-                let del = document.createElement("i")
-                del.className += " regards bi bi-trash-fill"
-                del.addEventListener("click",(e)=>{
-                    e.preventDefault();
-                    let postId = this.parentNode.parentNode.dataset.postId;
-                    deletePost(postId);
-                });
-                row.appendChild(del)
-                postElement.appendChild(row)
-                postContainer.appendChild(postElement)
-                });
-
-        })
-        .catch(function(error) {
-            console.log(error.data);
+            let edit = document.createElement("i");
+            edit.className = "regards bi bi-pencil-fill";
+            edit.addEventListener("click", (event) => {
+                event.preventDefault();
+                let postId = event.target.parentNode.parentNode.dataset.postId;
+                editPost(postId);
+            });
+            row.appendChild(edit);
+            
+            let del = document.createElement("i");
+            del.className = "regards bi bi-trash-fill";
+            del.addEventListener("click", (e) => {
+                e.preventDefault();
+                let postId = e.target.parentNode.parentNode.dataset.postId;
+                deletePost(postId);
+            });
+            row.appendChild(del);
+            postElement.appendChild(row);
+            postContainer.appendChild(postElement);
         });
-    
+    })
+    .catch(function(error) {
+        console.log(error.data);
+    });
 }
-deletePost(postId){
+
+function deletePost(postId){
     Swal.fire({
         title: 'Enter Password',
         input: 'password',
@@ -133,18 +119,19 @@ deletePost(postId){
                             showConfirmButton: false
                         });
                     });
-    }   else{
-        return Swal.fire({
-            icon: 'error',
-            title: 'Invalid Password',
-            text: 'Please enter correct password',
-            timer: 1000,
-            showConfirmButton: false
-        });
-    }
+            } else {
+                return Swal.fire({
+                    icon: 'error',
+                    title: 'Invalid Password',
+                    text: 'Please enter correct password',
+                    timer: 1000,
+                    showConfirmButton: false
+                });
+            }
+        }
+    });
 }
-});
-}
+
 function editPost(postId) {
     Swal.fire({
         title: 'Enter Password',
@@ -232,9 +219,9 @@ function editPost(postId) {
         }
     });
 }
+
 document.addEventListener("readystatechange", function() {
     if (document.readyState === "complete") {
         renderPost();
     }
 });
-    

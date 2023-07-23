@@ -2,20 +2,11 @@ import express from 'express';
 import cors from 'cors';
 import path from 'path';
 const __dirname = path.resolve();
-
+import apiv1Router from './apiv1/main.mjs'
 const app = express()
+app.use(express.json());
 app.use(cors())
-
-// import apiv1Router from './APIV1/main.mjs'
-// import apiv2Router from './APIV2/main.mjs'
-// app.use(express.json()); 
-
-// app.use("/api/v1", apiv1Router)
-// app.use("/api/v2", apiv2Router)
-// app.get('/', (req, res, next) =>{
-//     res.send('Hello World')    
-
-// })
+app.use("/api/v1", apiv1Router)
 
 app.use('/', express.static(path.join(__dirname, 'public')))
 

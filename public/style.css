@@ -78,3 +78,55 @@ label{
     margin-left: 1em;
     margin-top: 2em;
 }
+.result {
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+    flex-wrap: wrap;
+    width: 100%;
+    /* border: 2px solid #212121; */
+    padding: 1em 0em;
+}
+
+.post {
+    background-color:#fff ;
+    display: flex;
+    justify-content: space-between;
+    /* justify-content: right; */
+    flex-direction: column;
+    align-items: center;
+    padding: 1.5em;
+    row-gap: 1em;
+    width: 15em!important;
+    border: 2px solid rgb(102, 232, 231);
+}
+
+.result>.post>p {
+    font-size: 0.9em;
+    width: 100%;
+    text-align: left;
+}
+
+.result>.post>row {
+    padding: 0em;
+    column-gap: 0.5em;
+}
+h2.scroll{
+    color: #212121;
+}
+p.regards.center{
+    color: #212121;
+}
+p.regards{
+    color: #212121;
+}
+p.scroll{
+    color: #212121;
+}
+div.space-arround{
+    color: #66e8e7;
+    background-color: #212121;
+}
+.bi{
+    color: rgb(102, 232, 231);
+}
