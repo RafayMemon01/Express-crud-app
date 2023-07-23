@@ -1,0 +1,48 @@
+body {
+    background: rgb(102, 232, 231);
+    background: linear-gradient(90deg, rgba(102, 232, 231, 1) 0%, rgba(203, 235, 222, 1) 48%);
+}
+row.space-arround{
+    display: flex;
+    justify-content: center;
+    justify-content: space-around;
+    color: #fff;
+    margin-top: 2rem;
+}
+row.space-arround h1{
+    color: #fff;
+}
+row.space-arround div button{
+    background: none;
+    color: white;
+    border: none;
+}
+
+.headerEndLine{
+    background-color: white;
+    width: 100%;
+    height: .2em;
+    margin-top: .5em;
+}
+
+.swal2-confirm:focus,
+.swal2-deny:focus,
+.swal2-cancel:focus,
+.swal2-input:focus {
+    box-shadow: 0 0 4px #212121 !important;
+}
+
+.swal2-input {
+    border: 0px solid #212121 !important;
+    width: 80%;
+    margin: 1em auto;
+    padding: 0.5em;
+}
+
+.swal2-confirm {
+    background-color: #212121;
+}
+
+div:where(.swal2-container) div:where(.swal2-loader) {
+    border-color: #212121 #fff;
+}
